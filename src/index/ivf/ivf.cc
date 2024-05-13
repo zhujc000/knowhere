@@ -511,7 +511,7 @@ IvfIndexNode<DataType, IndexType>::TrainInternal(const DataSet& dataset, const C
             std::make_unique<faiss::IndexFlatElkan>(dim, metric.value(), false, use_elkan);
         // create index. Index does not own qzr
         index = std::make_unique<faiss::IndexIVFScalarQuantizer>(
-            qzr.get(), dim, nlist, faiss::ScalarQuantizer::QuantizerType::QT_8bit, metric.value());
+            qzr.get(), dim, nlist, faiss::ScalarQuantizer::QuantizerType::QT_8bit, metric.value(), true);
         // train
         index->train(rows, (const float*)data);
         // replace quantizer with a regular IndexFlat
