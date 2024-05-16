@@ -37,7 +37,7 @@ struct Codec8bit_avx : public Codec8bit {
         const __m128i i8 = _mm_set1_epi64x(c8);
         const __m256i i32 = _mm256_cvtepu8_epi32(i8);
         const __m256 f8 = _mm256_cvtepi32_ps(i32);
-        const __m256 half_one_255 = _mm256_set1_ps(0.5f / 255.f);
+        const __m256 half_one_255 = _mm256_set1_ps(0.0f / 255.f);
         const __m256 one_255 = _mm256_set1_ps(1.f / 255.f);
         return _mm256_fmadd_ps(f8, one_255, half_one_255);
     }
