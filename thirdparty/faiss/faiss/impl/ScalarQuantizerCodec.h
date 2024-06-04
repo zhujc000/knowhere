@@ -43,7 +43,7 @@ struct Codec8bit {
     static FAISS_ALWAYS_INLINE float decode_component(
             const uint8_t* code,
             int i) {
-        return (code[i] + 0.0f) / 255.0f;
+        return (code[i] + 0.5f) / 255.0f;
     }
 };
 

@@ -35,7 +35,7 @@ struct Codec8bit_avx512 : public Codec8bit_avx {
         const __m128i c8 = _mm_loadu_si128((const __m128i_u*)(code + i));
         const __m512i i32 = _mm512_cvtepu8_epi32(c8);
         const __m512 f8 = _mm512_cvtepi32_ps(i32);
-        const __m512 half_one_255 = _mm512_set1_ps(0.0f / 255.f);
+        const __m512 half_one_255 = _mm512_set1_ps(0.5f / 255.f);
         const __m512 one_255 = _mm512_set1_ps(1.f / 255.f);
         return _mm512_fmadd_ps(f8, one_255, half_one_255);
     }
